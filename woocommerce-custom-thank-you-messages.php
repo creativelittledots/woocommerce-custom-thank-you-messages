@@ -1,7 +1,7 @@
 <?php
 /*
 * Plugin Name: WooCommerce Custom Thank You Messages
-* Description: Extends WooCommerce and allows you to set the Thank You Page message for each status.
+* Description: Extends Woocommerce and allows you to set the Thank You Messages on the Order Received Page for each Order Status.
 * Version: 1.0.0
 * Author: Creative Little Dots
 * Author URI: http://creativelittledots.co.uk
@@ -122,12 +122,10 @@ class WC_Custom_Thank_You_Messages {
 	
 	public function display_custom_message($message, $order) {
 		
-		if(get_option($order->post_status . '_messages_message')) {
-			
-			$message = get_option($order->post_status . '_messages_message');
+		if( $message = get_option('wc-' . $order->get_status() . '_messages_message') ) {
 			
 			$replace = apply_filters('woocommerce_custom_thank_you_messages_replace_strings', array(
-				'{order_number}' => $order->id, 
+				'{order_number}' => $order->get_id(), 
 				'{order_checkout_payment_url}' => $order->get_checkout_payment_url()
 			), $order);
 			
