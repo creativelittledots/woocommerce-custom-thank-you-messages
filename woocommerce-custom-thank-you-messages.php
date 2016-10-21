@@ -125,7 +125,7 @@ class WC_Custom_Thank_You_Messages {
 		if( $message = get_option('wc-' . $order->get_status() . '_messages_message') ) {
 			
 			$replace = apply_filters('woocommerce_custom_thank_you_messages_replace_strings', array(
-				'{order_number}' => $order->get_id(), 
+				'{order_number}' => $order->id, 
 				'{order_checkout_payment_url}' => $order->get_checkout_payment_url()
 			), $order);
 			
