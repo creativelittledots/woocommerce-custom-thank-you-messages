@@ -42,9 +42,6 @@ class WC_Custom_Thank_You_Messages {
 	
 	public function display_editor($value) {
 		
-		if ( ! isset( $value['type'] ) ) {
-			continue;
-		}
 		if ( ! isset( $value['id'] ) ) {
 			$value['id'] = '';
 		}
